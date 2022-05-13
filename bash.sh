@@ -1,4 +1,4 @@
-echo 'what task is completed?'
+echo 'which task is completed?'
 read num
 git add .
 git commit -m 'ex'$num' completed'

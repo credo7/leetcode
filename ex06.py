@@ -1,17 +1,12 @@
 class Solution:
-    def reverse(self, x: int) -> int:
-        sign_multiplier = 1
-        if x < 0: 
-            sign_multiplier = -1
-            x = x * sign_multiplier
-
-        result = 0
-        min_int_32 = 2 ** 31
-        while x > 0:
-            result = result * 10 + x % 10
-            
-            if result * sign_multiplier <= -min_int_32 or result * sign_multiplier >= min_int_32-1:
-                return 0
-            x = x // 10
-
-        return sign_multiplier * result
+    def convert(self, s: str, numRows: int) -> str:
+        if numRows == 1: return s
+        res = ''
+        
+        for r in range(numRows):
+            increment = (numRows - 1) * 2
+            for i in range(r,len(s),increment):
+                res += s[i]
+                if (r > 0 and r < numRows - 1 and (i + increment - 2 * r) < len(s)):
+                    res += s[i + increment - 2 * r]
+        return res
